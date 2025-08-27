@@ -22,3 +22,12 @@ voms-prozy-init --voms cms
 ```
 
 
+
+## Links:
+
+*  Record schema information: https://github.com/cernopendata/cernopendata-portal/tree/main/cernopendata/jsonschemas/records
+
+*  Example RAW record: https://opendata.cern.ch/record/67
+
+*  JSON schema: https://json-schema.org/
+
