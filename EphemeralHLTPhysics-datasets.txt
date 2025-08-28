@@ -1,4 +1,3 @@
-/ZeroBias/Run2017E-v1/RAW#37d3f45e-a4a5-11e7-bbce-02163e01ab31
 /EphemeralHLTPhysics0/Run2024F-v1/RAW#35e5ed22-a9dd-4734-833c-70d30de920d7
 /EphemeralHLTPhysics1/Run2024F-v1/RAW#9c9e0c57-56a1-4ee4-98dc-384c94184bc9
 /EphemeralHLTPhysics2/Run2024F-v1/RAW#91741d2b-3627-4122-822c-edb9b55a6b0c
