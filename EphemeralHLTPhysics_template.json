@@ -1,0 +1,31 @@
+{
+   "collaboration": {
+      "name": "CMS collaboration",
+      "recid": "451"
+   },
+   "collections": [
+      "CMS-Primary-Datasets"
+   ],
+   "collision_information": {
+      "energy": "13.6TeV",
+      "type": "pp"
+   },
+   "date_published": "2025",
+   "doi": "XX.YYYY/OPENDATA.CMS.AAAA.BBBB",
+   "experiment": [
+      "CMS"
+   ],
+   "license": {
+      "attribution": "CC0-1.0"
+   },
+   "publisher": "CERN Open Data Portal",
+   "recid": "",
+   "title": "",
+   "title_additional": "EphemeralHLTPhysics primary dataset in RAW format from Run2024F",
+   "type": {
+      "primary": "Dataset",
+      "secondary": [
+         "Collision"
+      ]
+   }
+}
