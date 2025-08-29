@@ -25,13 +25,6 @@ def populate_files(record, directory, pattern):
     required=True
 )
 @click.option(
-    '--of',
-    'output_file_name',
-    type=click.STRING,
-    help='output record json file name',
-    default="record.json"
-)
-@click.option(
     '--s',
     'json_schema_file',
     type=click.Path(exists=True),
@@ -46,7 +39,6 @@ def populate_files(record, directory, pattern):
     required=True
 )
 def main(input_file_name,
-         output_file_name,
          json_schema_file,
          template_file
          ):
@@ -95,10 +87,19 @@ def main(input_file_name,
             separators=(",", ": ")
         )
 
+
+        # This is where the record json files go
+        directory = Path('records')
+
+        if not directory.is_dir():
+            directory.mkdir(exist_ok=True)
+        
         output_file_name = dn.replace('/', '_')
         output_file_name = f'CMS{output_file_name}_record.json'
         record_file = directory/output_file_name
 
+        print(record_file)
+        
         with record_file.open('w') as f:
             f.write(
                 record_json
