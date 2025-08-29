@@ -26,8 +26,9 @@ Generate the RAW dataset records:
 ```
 python make_raw_dataset_record.py --if EphemeralHLTPhysics-datasets.txt  --s record-v1.0.0.json --tf EphemeralHLTPhysics_template.json
 python make_raw_dataset_record.py --if ZeroBias-datasets.txt  --s record-v1.0.0.json --tf ZeroBias_template.json
+python make_raw_dataset_record.py --if MC-datasets.txt --s record-v1.0.0.json --tf MC_template.json
 ```
-which are generated, validated with the schema, and written to `output`.
+which are generated, validated with the schema, and written to `records`.
 
 
 ```
@@ -35,7 +36,6 @@ Usage: make_raw_dataset_record.py [OPTIONS]
 
 Options:
   --if PATH  input file with dataset names  [required]
-  --of TEXT  output record json file name
   --s PATH   json schema file  [required]
   --tf PATH  template record file  [required]
   --help     Show this message and exit.
