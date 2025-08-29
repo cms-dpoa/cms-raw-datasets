@@ -1,0 +1,7 @@
+/QCD_Pt-20toInf_MuEnrichedPt5_TuneCP5_13TeV_pythia8/RunIISummer20UL17HLT-PUForTRKv2_TRKv2_94X_mc2017_realistic_v15-v2/GEN-SIM-DIGI-RAW#8a21edce-3fe1-4333-8c1c-d170a82e7a7d
+/QCD_Pt-20toInf_MuEnrichedPt5_TuneCP5_13TeV_pythia8/RunIISummer20UL17HLT-PUForTRKv2_TRKv2_94X_mc2017_realistic_v15-v2/GEN-SIM-DIGI-RAW#963c1549-f01d-4c10-a08e-7ded7ae67200
+/SingleNeutrino/RunIISummer20UL17HLT-PUForTRKv2_TRKv2_94X_mc2017_realistic_v15-v2/GEN-SIM-DIGI-RAW#148df7d0-6d8b-4701-bee4-c03527e35e02
+/SingleNeutrino/RunIISummer20UL17HLT-PUForTRKv2_TRKv2_94X_mc2017_realistic_v15-v2/GEN-SIM-DIGI-RAW#5761aa1b-6695-4b26-9e2a-144ba6ff7d95
+/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL17HLT-PUForTRKv2_TRKv2_94X_mc2017_realistic_v15-v2/GEN-SIM-DIGI-RAW#705a74db-5d12-4bdf-b94c-ce671feb9469
+/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL17HLT-PUForTRKv2_TRKv2_94X_mc2017_realistic_v15-v2/GEN-SIM-DIGI-RAW#39caf4ed-bfd1-4f67-bd6e-d54858a84cd3
+/TTToHadronic_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL17HLT-PUForTRKv2_TRKv2_94X_mc2017_realistic_v15-v2/GEN-SIM-DIGI-RAW#83bb42c3-0ceb-4c19-b4fe-f957ecb2df26
