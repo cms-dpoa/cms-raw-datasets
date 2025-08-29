@@ -4,11 +4,12 @@ import os
 import re
 import subprocess
 
+from pathlib import Path
+
 EOS_BASE_URI = "root://eospublic.cern.ch/"
 os.environ["EOS_MGM_URL"] = EOS_BASE_URI
-EOS_BASE_DIR = "/eos/opendata/cms"
 
-def get_dataset_dir(dataset_name):
+def get_dataset_dir(dataset_name, eos_base_dir):
     '''
     In eos the dataset directory is formed from 
     dataset name /NAME/RUNPERIOD-VERSION/FORMAT
@@ -20,15 +21,15 @@ def get_dataset_dir(dataset_name):
     rpv = dn[2].split('-', 1)
 
     return(
-        f'{EOS_BASE_DIR}/{rpv[0]}/{dn[1]}/{dn[3]}/{rpv[1]}'
+        f'{eos_base_dir}/{rpv[0]}/{dn[1]}/{dn[3]}/{rpv[1]}'
     )
 
-def get_volumes(dataset_name):
+def get_volumes(dataset_name, eos_base_dir):
     '''
     Return list of volumes for the given dataset
     '''
     volumes = []
-    dataset_dir = get_dataset_dir(dataset_name)
+    dataset_dir = get_dataset_dir(dataset_name, eos_base_dir)
 
     print(dataset_dir)
 
@@ -43,12 +44,12 @@ def get_volumes(dataset_name):
 
     return volumes
 
-def get_files(dataset_name, volume):
+def get_files(dataset_name, volume, eos_base_dir):
     '''
     Return file list with information about name, size, location for the given dataset and volume.
     '''
     files = []
-    dataset_dir = get_dataset_dir(dataset_name)
+    dataset_dir = get_dataset_dir(dataset_name, eos_base_dir)
 
     output = subprocess.check_output(
         f'eos find --xurl --size --checksum {dataset_dir}/{volume}',
@@ -76,33 +77,43 @@ def get_files(dataset_name, volume):
 
 def create_output_files(dataset_name, volume, files):
 
+    directory = Path('output')
+
+    if not directory.is_dir():
+        directory.mkdir(exist_ok=True)
+    
     dn = dataset_name.split('/')
     assert len(dn) == 4
     rpv = dn[2].split('-', 1)
     
     file_name = f'CMS_{rpv[0]}_{dn[1]}_{dn[3]}_{rpv[1]}_{volume}_file_index'
 
-    json_file = open(f'{file_name}.json', 'w')
+    json_file = directory/f'{file_name}.json'
+    
+    with json_file.open('w') as f:
 
-    json_file.write(
-        json.dumps(
-            files,
-            indent=3,
-            sort_keys=True,
-            separators=(",", ": ")
-        )
-    )
-
-    json_file.close()
-
-    txt_file = open(f'{file_name}.txt', 'w')
-
-    for file in files:
-        txt_file.write(
-            f'{file["uri"]}\n'
+        f.write(
+            json.dumps(
+                files,
+                indent=3,
+                sort_keys=True,
+                separators=(",", ": ")
+            )
         )
 
-    txt_file.close()
+        f.close()
+        
+
+    txt_file = directory/f'{file_name}.txt'
+
+    with txt_file.open('w') as f:
+    
+        for file in files:
+            f.write(
+                f'{file["uri"]}\n'
+            )
+
+        f.close()
 
 @click.command()
 @click.option(
@@ -117,7 +128,14 @@ def create_output_files(dataset_name, volume, files):
     type=str,
     help='dataset name'
 )
-def main(file_name, dataset_name):
+@click.option(
+    '--bd',
+    'eos_base_dir',
+    type=str,
+    help='EOS base directory',
+    default='/eos/opendata/cms'
+)
+def main(file_name, dataset_name, eos_base_dir):
     '''
     For each dataset get the volumes
     and create the index files
@@ -142,10 +160,10 @@ def main(file_name, dataset_name):
 
         print(dataset_name)
         
-        volumes = get_volumes(dataset_name)
+        volumes = get_volumes(dataset_name, eos_base_dir)
 
         for volume in volumes:
-            files = get_files(dataset_name, volume)
+            files = get_files(dataset_name, volume, eos_base_dir)
             create_output_files(dataset_name, volume, files)
             
 
